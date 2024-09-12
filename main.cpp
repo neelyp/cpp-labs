@@ -61,5 +61,6 @@ int main()
   }
 
   std::cout << x << " incremented is " << ++x << " and " << y << " incremented is " << ++y << std::endl;
+  std::cout << x << " decremented is " << --x << " and " << y << " incremented is " << --y << std::endl;
   return 0;
 }
