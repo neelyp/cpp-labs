@@ -1,15 +1,65 @@
+/**
+ * Neel Pandruvada
+ * 9/12/2024
+ * Calculator program
+ * extra: used functions for calculations
+ */
+
 #include <iostream>
-std::string artist = "carti";
-int rank = 1;
-bool goat = true;
-float albums = 0.5;
+
+float x, y;
+char op;
+
+float add(float x, float y)
+{
+  return x + y;
+}
+
+float sub(float x, float y)
+{
+  return x - y;
+}
+
+float mult(float x, float y)
+{
+  return x * y;
+}
+
+float div(float x, float y)
+{
+  return x / y;
+}
 
 int main()
 {
-    std::cout << "the artist is: " << artist << std::endl;
-    if (goat) {
-        std::cout << "Carti is the number " << rank << " artist in the world" << std::endl;
-    }
+  std::cout << "Enter the first number: " << std::endl;
+  std::cin >> x;
 
-    std::cout << "carti has dropped " << albums << " albums in the past 4 years." << std::endl;
+  std::cout << "Enter the operation: " << std::endl;
+  std::cin >> op;
+
+  std::cout << "Enter the second number: " << std::endl;
+  std::cin >> y;
+
+  switch (op)
+  {
+  case '+':
+    std::cout << add(x, y) << std::endl;
+    break;
+  case '-':
+    std::cout << sub(x, y) << std::endl;
+    break;
+  case '/':
+    std::cout << div(x, y) << std::endl;
+    break;
+  case '*':
+    std::cout << mult(x, y) << std::endl;
+    break;
+  default:
+    std::cout << "Your operation is invalid" << std::endl;
+    break;
+  }
+
+  std::cout << x << " incremented is " << ++x << " and " << y << " incremented is " << ++y << std::endl;
+  return 0;
 }
