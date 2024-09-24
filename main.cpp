@@ -1,15 +1,35 @@
 #include <iostream>
-std::string artist = "carti";
-int rank = 1;
-bool goat = true;
-float albums = 0.5;
+#include <cctype>
+using namespace std;
 
 int main()
 {
-    std::cout << "the artist is: " << artist << std::endl;
-    if (goat) {
-        std::cout << "Carti is the number " << rank << " artist in the world" << std::endl;
-    }
+  bool raining, hot, windy;
 
-    std::cout << "carti has dropped " << albums << " albums in the past 4 years." << std::endl;
+  cout << "is it raining? (y/n)" << endl;
+  if (tolower(static_cast<unsigned char>(cin.get())) == 'y')
+    raining = true;
+  else
+    raining = false;
+  cin.ignore();
+  cout << "is it hot? (y/n)" << endl;
+  if (tolower(static_cast<unsigned char>(cin.get())) == 'y')
+    hot = true;
+  else
+    hot = false;
+  cin.ignore();
+
+  if (hot)
+  {
+    cout << "Wear a tshirt and shorts" << endl;
+  }
+  else
+  {
+    cout << "wear a hoodie" << endl;
+  }
+  if (raining)
+  {
+    cout << "Make sure to bring an umbrella!" << endl;
+  }
+  return 0;
 }
