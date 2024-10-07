@@ -1,3 +1,11 @@
+/*
+Neel
+10/7
+Mood
+Extra: added sixth emotion
+
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -5,13 +13,13 @@ using namespace std;
 int main()
 {
   int mood;
-  cout << "What is your mood?\n1-happy\n2-sad\n3-angry\n4-sus\n5-tiggly\n> ";
-  cin >> mood;
+  cout << "What is your mood?\n1-happy\n2-sad\n3-angry\n4-sus\n5-tiggly\n6-sigma\n> ";
+  cin >> mood; // get mood
 
-  switch (mood)
+  switch (mood) // check mood
   {
   case 1:
-    cout << "Hip hip hooray!";
+    cout << "Hip hip hooray!"; // give message based on mood
     break;
   case 2:
     cout << "Shucks dude :(";
@@ -24,6 +32,9 @@ int main()
     break;
   case 5:
     cout << "Tiggly tafa thar thar usturgian!";
+  case 6:
+    cout << "sigma sigma on the wall whos the rizziest of them all?";
+    break;
   default:
     cout << "Thats fake ngl";
     break;
