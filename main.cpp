@@ -32,7 +32,8 @@ int main()
     break;
   case 5:
     cout << "Tiggly tafa thar thar usturgian!";
-  case 6:
+    break; // NEVRR FORGET 🫡🫡🫡
+    case 6:
     cout << "sigma sigma on the wall whos the rizziest of them all?";
     break;
   default:
