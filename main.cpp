@@ -29,7 +29,7 @@ int main()
 
     while (energy > 0 && supplies < 10) // run until ending requirements
     {
-        std::cout << energy << " " << supplies << std::endl;
+        std::cout << "Energy: " << energy << "\nSupplies: " << supplies << std::endl;
         int choice;
         std::cout << "1: search for supplies\n2: rest";
         std::cin >> choice;
@@ -46,11 +46,11 @@ int main()
         std::cout << energy << " " << supplies << std::endl;
     }
 
-    printf("Energy: %d\nSupplies %d", energy, supplies);
+    printf("You ended with %d energy and %d supplies\n", energy, supplies);
 
-    if (supplies > 10)
+    if (supplies >= 10)
     {
-        std::cout << "You win!" << std::endl;
+        std::cout << "You survived!" << std::endl;
     }
     else
     {
@@ -62,10 +62,22 @@ int main()
     // lock
     int lock = 548;
     int guess = 0;
+    char again;
 
     do
     {
         std::cout << "Guess the code: " << std::endl;
         std::cin >> guess;
-    } while (guess != lock); // run once and then keep going again until code is guessed.
+
+        std::cout << "Guess again? (y/n): " << std::endl;
+        std::cin >> again;
+    } while (guess != lock && again == 'y'); // run once and then keep going again until code is guessed.
+    if (again != 'y')
+    {
+        std::cout << "The lock remains locked..." << std::endl;
+    }
+    else
+    {
+        std::cout << "You unlocked the lock!" << std::endl;
+    }
 }
