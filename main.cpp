@@ -6,6 +6,11 @@
 
 #include <iostream>
 
+void countdown();
+void customGreet(std:string name, int times);
+int getFavoriteNum();
+float calcAvg(int a, int b, int c);
+
 void countdown()
 {
     for (int i = 10; i > 0; i--) // counts down from 10 to 1
