@@ -1,58 +1,60 @@
 /*
-    Neel Pandruvada
-    FUNction Lab
-    11/21/24
+  Neel Pandruvada
+  11/27/2024
+  Pizza Pizza
+  Extra: used pointers to return array
 */
+
 
 #include <iostream>
 
-void countdown()
-{
-    for (int i = 10; i > 0; i--) // counts down from 10 to 1
-    {
-        std::cout << i << std::endl;
-    }
-    std::cout << "Liftoff!" << std::endl;
+double calcPrice(char size, int toppings, double* prices);
+void bill(double price, char size, int toppings, double* prices);
+double* prices(char size);
+
+double* prices(char size) {
+  double suzzPruzz = (size == 's') ? 9.99 : 14.99;
+  double tuzzUnitPruzz = (size == 's') ? 1.20 : 1.50;
+
+  double* prices_ = new double[2];
+  prices_[0] = suzzPruzz;
+  prices_[1] = tuzzUnitPruzz;
+
+  return prices_;
 }
 
-void customGreet(std::string name, int times)
-{
-    for (int i = 0; i < times; i++) // repeats name based on times inputted
-    {
-        std::cout << "Hello, " << name << std::endl;
-    }
+double calcPrice(char size, int toppings, double* prices) {
+  double suzzPruzz = prices[0];
+  double tuzzUnitPruzz = prices[1];
+  double tuzzPruzz = tuzzUnitPruzz * toppings;
+
+  return tuzzPruzz + suzzPruzz;
 }
 
-int getFavoriteNum() // always returns 7o8l;p'
-{
-    return 7;
+void bill(double price, char size, int toppings, double* prices) {
+  std::cout << "Size of pizza: " << size << "(" << prices[0] << ")" << std::endl;
+  std::cout << "Number of toppings: " << toppings << "(" << prices[1] << " per topping)" << std::endl;
+  std::cout << "Total price: " << price << std::endl;
 }
 
-float calcAvg(int a, int b, int c)
-{
-    return (a + b + c) / 3; // returns average of the three numbers
-}
+int main() {
+  std::cout << "Welcome to Athuzz Uzz Puzz!" << std::endl;
 
-int main()
-{
-    countdown();
+  char size;
+  int toppings;
 
-    std::cout << "Enter your name: " << std::endl;
-    std::string name;
-    int times;
-    std::cin >> name;
-    std::cout << "Enter a number of times: " << std::endl;
-    std::cin >> times;
-    customGreet(name, times);
+  std::cout << "What size pizza do you want? (s/l): " << std::endl;
+  std::cin >> size;
 
-    int fav = getFavoriteNum();
-    std::cout << "Your favorite number is: " << fav << std::endl;
+  std::cout << "How many toppings do you want? " << std::endl;
+  std::cin >> toppings;
 
-    int a, b, c;
-    std::cout << "Enter three integers: " << std::endl;
-    std::cin >> a >> b >> c;
-    float avg = calcAvg(a, b, c);
-    std::cout << avg << std::endl;
+  double* pizzaPrices = prices(size);
+  double totalPrice = calcPrice(size, toppings, pizzaPrices);
 
-    return 0;
+  bill(totalPrice, size, toppings, pizzaPrices);
+
+  delete[] pizzaPrices;
+
+  return 0;
 }
