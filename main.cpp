@@ -1,7 +1,6 @@
 // Top x
 // 10/30/24
 // Neel Pandruvada
-// 
 
 #include <iostream>
 #include <string>
