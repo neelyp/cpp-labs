@@ -1,34 +1,34 @@
 /*
   Neel Pandruvada
-  Character Functions
-  12/6/24
+  Time
+  12/12/24
  */
 
 #include <iostream>
-#include <cctype>
+#include <ctime>
 
 int main() {
-  std::string name;
-  bool nums = false;
-  std::string upper;
+  std::time_t now = std::time(nullptr);
+  std::cout << "Current time: " << std::ctime(&now);
 
-  std::cout << "¿Cómo te llamas? " << std::endl;
-  std::cin >> name;
+  // #2
+  std::time_t now_ = std::time(nullptr);
+  int offset;
+  std::cout << "Enter an ofset" << std::endl;
+  std::cin >> offset;
+  now += offset * 3600;
+  std::tm* timeZoneTime = std::gmtime(&now);
+  std::cout << std::asctime(timeZoneTime);
 
-  for (char c : name) {
-    if (!isalpha(c)) {
-      nums = true;
-      break;
-    } else {
-      upper += toupper(c);
-    }
-  }
+  // #3
+  int ans;
+  std::time_t start = std::time(nullptr);
+  std::cout << "What is 1+1? " << std::endl;
+  std::cin >> ans;
+  std::time_t end = std::time(nullptr);
 
-  if (!nums) {
-    std::cout << upper << std::endl;
-  } else {
-    std::cout << "That has numbers or special characters";
-  }
+  double duration = std::difftime(end, start);
+  std::cout << duration << " seconds";
 
   return 0;
 }
