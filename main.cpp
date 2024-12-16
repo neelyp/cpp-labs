@@ -8,16 +8,17 @@
 #include <ctime>
 
 int main() {
+  // #1
   std::time_t now = std::time(nullptr);
   std::cout << "Current time: " << std::ctime(&now);
 
   // #2
   std::time_t now_ = std::time(nullptr);
   int offset;
-  std::cout << "Enter an ofset" << std::endl;
+  std::cout << "Enter an offset" << std::endl;
   std::cin >> offset;
-  now += offset * 3600;
-  std::tm* timeZoneTime = std::gmtime(&now);
+  now_ += offset * 3600;
+  std::tm* timeZoneTime = std::gmtime(&now_);
   std::cout << std::asctime(timeZoneTime);
 
   // #3
