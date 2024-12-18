@@ -7,7 +7,7 @@
 #include <iostream>
 
 void countdown();
-void customGreet(std:string name, int times);
+void customGreet(std::string name, int times);
 int getFavoriteNum();
 float calcAvg(int a, int b, int c);
 
