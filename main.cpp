@@ -1,34 +1,14 @@
-/*
-  Neel Pandruvada
-  Time
-  12/12/24
- */
-
 #include <iostream>
-#include <ctime>
+#include <cmath>
+#include <cstdlib>
 
 int main() {
-  std::time_t now = std::time(nullptr);
-  std::cout << "Current time: " << std::ctime(&now);
+    double num = 3.141592653;
+    double rounded = std::round(num * 100) / 100;
+    std::cout << rounded << std::endl;
 
-  // #2
-  std::time_t now_ = std::time(nullptr);
-  int offset;
-  std::cout << "Enter an ofset" << std::endl;
-  std::cin >> offset;
-  now += offset * 3600;
-  std::tm* timeZoneTime = std::gmtime(&now);
-  std::cout << std::asctime(timeZoneTime);
+    std::srand(time(0));
+    std::cout << std::rand() % 11 << std::endl;
 
-  // #3
-  int ans;
-  std::time_t start = std::time(nullptr);
-  std::cout << "What is 1+1? " << std::endl;
-  std::cin >> ans;
-  std::time_t end = std::time(nullptr);
-
-  double duration = std::difftime(end, start);
-  std::cout << duration << " seconds";
-
-  return 0;
+    return 0;
 }
