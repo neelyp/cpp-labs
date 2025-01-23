@@ -1,97 +1,142 @@
 // neel pandruvada
-// 1/21/25
-// array lab
-// extra: print sum of numbers in first array
+// 1/23/25
+// vector
 
-#include <ctime>
 #include <iostream>
-#include <cmath>
-#include <iomanip>
+#include <vector>
 
-float avg(float ar[]);
+void userIntVector();
+void vectorPractice();
+void colorVector();
+void names();
 
-int main() {
-    // 1
-    int rands[10];
-    int sum = 0;
-    int evens = 0;
-    srand(time(0));
-
-    for (int i = 0; i < 10; i++) {
-        rands[i] = 1 + (rand() % 10);
-    }
-
-    for (int num : rands) {
-        std::cout << num << " ";
-        sum += num;
-        if (num % 2 == 0) evens++;
-    }
-    std::cout << std::endl;
-
-    for (int i = 9; i >= 0; i--) {
-        std::cout << rands[i] << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Evens: " << evens << std::endl;
-
-
-
-    std::cout << "Sum: " << sum << std::endl;
-
-    // 2
-    float sales[7] = {100.50, 200.75, 150.25, 175.00, 220.50, 180.00, 190.25};
-    while (true) {
-        std::cout << "Do you want to view the sales for a day? (y/n): " << std::endl;
-        char choice;
-        std::cin >> choice;
-        if (choice == 'n') break;
-        else {
-            std::cout << "Enter the day number (1 for Monday... 7 for Sunday) " << std::endl;
-            int day;
-            std::cin >> day;
-
-            if (day < 1 || day > 7) {
-                std::cout << "not a day" << std::endl;
-            } else {
-                std::cout << "Sales for day: $" << std::fixed << std::setprecision(2) << sales[day - 1] << std::endl;
-            }
-        }
-    }
-
-    // 3
-    int ages[20];
-    int over15 = 0;
-    for (int i = 0; i < 20; i ++) {
-        std::cout << "Enter the age for person " << i + 1 << std::endl;
-        std::cin >> ages[i];
-    }
-
-    for (int num : ages) {
-        std::cout << num << " ";
-        over15 += num > 15;
-    }
-    std::cout << std::endl;
-
-    std::cout << "There are " << over15 << " people over 15" << std::endl;
-
-    // 4
-    float finalGrades[6] = {85.8, 93.7, 76, 88.5, 100, 91.3};
-    for (float num : finalGrades) {
-        std::cout << num << " ";
-    }
-    std::cout << std::endl;
-    std::cout << "Average: " << avg(finalGrades) << std::endl;
-
-    return 0;
+int main()
+{
+    vectorPractice();
+    userIntVector();
+    colorVector();
+    names();
 }
 
-float avg(float ar[]) {
-    float sum = 0;
-    int size = sizeof(ar) / sizeof(ar[0]);
-    for (int i = 0; i < size; i++) {
-        sum += ar[i];
+void vectorPractice()
+{
+    std::vector<int> nums(10);
+    for (int i = 0; i < 10; i++)
+        nums[i] = i;
+    std::cout << nums[2] << std::endl;
+    nums.pop_back();
+    for (int num : nums)
+        std::cout << num << " ";
+    std::cout << std::endl;
+}
+
+void userIntVector()
+{
+    std::vector<int> nums;
+
+    while (true)
+    {
+        int choice;
+        std::cout << "Do you want to:\n1) add a number to the vector\n2) Display the numbers\n3) Display Vector size\n4) Exit\n>" << std::endl;
+        std::cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            int num;
+            std::cout << "Enter a number: ";
+            std::cin >> num;
+            nums.push_back(num);
+            break;
+        case 2:
+            std::cout << "{";
+            for (int i = 0; i < nums.size(); i++)
+            {
+                if (i == nums.size() - 1)
+                    std::cout << nums[i];
+                else
+                    std::cout << nums[i] << ", ";
+            }
+            std::cout << "}" << std::endl;
+            break;
+        case 3:
+            std::cout << "Vector size: " << nums.size() << std::endl;
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void colorVector()
+{
+    std::vector<std::string> favColors;
+    std::cout << "Enter your favorite color: " << std::endl;
+    std::string col;
+    std::cin >> col;
+    favColors.push_back(col);
+
+    char choice;
+    do
+    {
+        std::cout << "Would you like to add another color? (y/n)" << std::endl;
+        std::cin >> choice;
+
+        if (tolower(choice) == 'y')
+        {
+            std::string color;
+            std::cout << "Enter your favorite color: " << std::endl;
+            std::cin >> color;
+            favColors.push_back(color);
+        }
+    } while (tolower(choice) == 'y');
+
+    std::cout << "Your favorite colors are: ";
+    for (int i = 0; i < favColors.size(); i++)
+    {
+        if (i == favColors.size() - 1 && favColors.size() > 1)
+        {
+            std::cout << "and " << favColors[i];
+        }
+        else if (i == favColors.size() - 2)
+        {
+            std::cout << favColors[i] << " ";
+        }
+        else
+        {
+            std::cout << favColors[i] << ", ";
+        }
+    }
+    std::cout << std::endl;
+}
+
+void names()
+{
+    std::cout << "how many names do you have? " << std::endl;
+    int names;
+    std::cin >> names;
+    std::vector<std::string> names_(names);
+
+    for (int i = 0; i < names; i++)
+    {
+        std::string name;
+        std::cout << "Enter a name: " << std::endl;
+        std::cin >> names_[i];
     }
 
-    return std::round((sum / size) * 10) / 10;
+    auto greeting = [](std::vector<std::string> names)
+    {
+        std::cout << "greetings and salutations ";
+        for (int i = 0; i < names.size(); ++i)
+        {
+            std::cout << names[i];
+            if (i != names.size() - 1)
+            {
+                std::cout << " ";
+            }
+        }
+        std::cout << "! " << std::endl;
+    };
+
+    greeting(names_);
 }
