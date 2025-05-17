@@ -4,8 +4,8 @@
 #include <iostream>
 
 // define functions
-void student(int &price);
-void teacher(int &price);
-void janitor(int &price);
+void student(double &price);
+void teacher(double &price);
+void janitor(double &price);
 
 #endif

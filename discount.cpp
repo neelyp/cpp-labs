@@ -3,12 +3,12 @@
 
 // act code functions
 
-void student(int &price) {
+void student(double &price) {
     price = price - (price * 0.10);
 }
-void teacher(int &price) {
+void teacher(double &price) {
     price = price - (price * 0.15);
 }
-void janitor(int &price) {
+void janitor(double &price) {
     price = price - (price * 0.25);
 }

@@ -11,5 +11,5 @@ void streetNameCaps(std::string &streetName) {
 }
 
 std::string closer(std::string productName) {
-    return "Thank you for your interest in " + productName + ".\nWe hope to see you at Comquest again soon!\n";
+    return "Thank you for your interest in \"" + productName + "\".\nWe hope to see you at Comquest again soon!\n";
 }
